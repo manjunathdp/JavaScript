@@ -4,7 +4,7 @@ let greeting = "  Hello, JavaScript!  ";
 // Using various string methods
 console.log(greeting.length);           // 21 (including leading/trailing spaces)
 console.log(greeting.trim().length);    // 19 (after trimming spaces)
-console.log(greeting.charAt(1));        // "H"
+console.log(greeting.charAt(2));        // "H"
 console.log(greeting.indexOf("Java"));  // 8
 console.log(greeting.includes("Script")); // true
 console.log(greeting.toUpperCase());    // "  HELLO, JAVASCRIPT!  "
