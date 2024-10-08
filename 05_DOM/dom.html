@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Manipulation Demo</title>
+    <style>
+        .highlight {
+            background-color: yellow;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 id="header">Welcome to DOM Manipulation</h1>
+    <p class="description">This is a demo for JavaScript DOM manipulation.</p>
+    <p class="description">Watch how we can change the DOM with JavaScript.</p>
+
+    <button id="changeTextBtn">Change Text</button>
+    <button id="addElementBtn">Add Element</button>
+    <button id="removeElementBtn">Remove Last Element</button>
+    <button id="toggleClassBtn">Toggle Highlight</button>
+
+    <ul id="itemList">
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+    </ul>
+
+    <script>
+        // Select elements
+        const header = document.getElementById('header');
+        const descriptions = document.getElementsByClassName('description');
+        const changeTextBtn = document.getElementById('changeTextBtn');
+        const addElementBtn = document.getElementById('addElementBtn');
+        const removeElementBtn = document.getElementById('removeElementBtn');
+        const toggleClassBtn = document.getElementById('toggleClassBtn');
+        const itemList = document.getElementById('itemList');
+
+        // Change Text Content
+        changeTextBtn.addEventListener('click', () => {
+            header.textContent = 'DOM Manipulation in Action!';
+            descriptions[0].innerHTML = '<strong>Text has been changed!</strong>';
+        });
+
+        // Add New Element to the List
+        addElementBtn.addEventListener('click', () => {
+            const newItem = document.createElement('li');
+            newItem.textContent = `Item ${itemList.children.length + 1}`;
+            itemList.appendChild(newItem);
+        });
+
+        // Remove the Last Element from the List
+        removeElementBtn.addEventListener('click', () => {
+            if (itemList.children.length > 0) {
+                itemList.removeChild(itemList.lastElementChild);
+            }
+        });
+
+        // Toggle Class on Header
+        toggleClassBtn.addEventListener('click', () => {
+            header.classList.toggle('highlight');
+        });
+    </script>
+
+</body>
+</html>
