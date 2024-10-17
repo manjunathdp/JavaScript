@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Events Demo</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+      .highlight {
+        background-color: yellow;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>JavaScript Events Demonstration</h1>
+
+    <!-- Click Event -->
+    <button id="clickButton">Click Me</button>
+    <p id="clickMessage"></p>
+
+    <!-- Mouseover Event -->
+    <div
+      id="hoverBox"
+      style="
+        width: 150px;
+        height: 150px;
+        background-color: lightblue;
+        margin-top: 20px;
+      "
+    >
+      Hover over me
+    </div>
+    <p id="hoverMessage"></p>
+
+    <!-- Input Event -->
+    <input
+      type="text"
+      id="nameInput"
+      placeholder="Type your name..."
+      style="margin-top: 20px"
+    />
+    <p id="inputMessage"></p>
+
+    <!-- Submit Event -->
+    <form id="myForm" style="margin-top: 20px">
+      <input type="text" id="formInput" placeholder="Enter text..." required />
+      <button type="submit">Submit</button>
+    </form>
+    <p id="formMessage"></p>
+
+    <!-- Prevent Default (Link) -->
+    <a href="https://example.com" id="exampleLink" style="margin-top: 20px"
+      >Go to Example.com</a
+    >
+    <p id="linkMessage"></p>
+
+    <script>
+      // Click Event
+      const clickButton = document.getElementById("clickButton");
+      const clickMessage = document.getElementById("clickMessage");
+
+      clickButton.addEventListener("click", () => {
+        clickMessage.textContent = "Button was clicked!";
+      });
+
+      // Mouseover Event
+      const hoverBox = document.getElementById("hoverBox");
+      const hoverMessage = document.getElementById("hoverMessage");
+
+      hoverBox.addEventListener("mouseover", () => {
+        hoverBox.classList.add("highlight");
+        hoverMessage.textContent = "You hovered over the box!";
+      });
+
+      hoverBox.addEventListener("mouseout", () => {
+        hoverBox.classList.remove("highlight");
+        hoverMessage.textContent = "";
+      });
+
+      // Input Event
+      const nameInput = document.getElementById("nameInput");
+      const inputMessage = document.getElementById("inputMessage");
+
+      nameInput.addEventListener("input", (event) => {
+        inputMessage.textContent = "You typed: " + event.target.value;
+      });
+
+      // Form Submit Event
+      const myForm = document.getElementById("myForm");
+      const formMessage = document.getElementById("formMessage");
+
+      myForm.addEventListener("submit", (event) => {
+        event.preventDefault(); // Prevent form from submitting
+        const formInputValue = document.getElementById("formInput").value;
+        formMessage.textContent = `Form submitted with value: ${formInputValue}`;
+      });
+
+      // Prevent Default Behavior (Link)
+      const exampleLink = document.getElementById("exampleLink");
+      const linkMessage = document.getElementById("linkMessage");
+
+      exampleLink.addEventListener("click", (event) => {
+        event.preventDefault(); // Prevent the link from navigating
+        linkMessage.textContent = "Link click prevented!";
+      });
+    </script>
+  </body>
+</html>
