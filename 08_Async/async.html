@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async JavaScript Demo</title>
+</head>
+<body>
+
+    <h1>Asynchronous JavaScript Demo</h1>
+
+    <button id="callbackBtn">Callback Demo</button>
+    <p id="callbackResult"></p>
+
+    <button id="promiseBtn">Promise Demo</button>
+    <p id="promiseResult"></p>
+
+    <button id="asyncAwaitBtn">Async/Await Demo</button>
+    <p id="asyncAwaitResult"></p>
+
+    <script>
+        // Callback Example
+        function fetchDataCallback(callback) {
+            setTimeout(() => {
+                callback('Callback: Data fetched successfully');
+            }, 2000); // Simulates a delay of 2 seconds
+        }
+
+        const callbackBtn = document.getElementById('callbackBtn');
+        const callbackResult = document.getElementById('callbackResult');
+
+        callbackBtn.addEventListener('click', () => {
+            callbackResult.textContent = 'Fetching data...';
+            fetchDataCallback((result) => {
+                callbackResult.textContent = result;
+            });
+        });
+
+        // Promise Example
+        function fetchDataPromise() {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    const success = true; // Simulate success/failure
+                    if (success) {
+                        resolve('Promise: Data fetched successfully');
+                    } else {
+                        reject('Promise: Error fetching data');
+                    }
+                }, 2000); // Simulates a delay of 2 seconds
+            });
+        }
+
+        const promiseBtn = document.getElementById('promiseBtn');
+        const promiseResult = document.getElementById('promiseResult');
+
+        promiseBtn.addEventListener('click', () => {
+            promiseResult.textContent = 'Fetching data...';
+            fetchDataPromise()
+                .then(result => {
+                    promiseResult.textContent = result;
+                })
+                .catch(error => {
+                    promiseResult.textContent = error;
+                });
+        });
+
+        // Async/Await Example
+        async function fetchDataAsync() {
+            try {
+                const data = await fetchDataPromise(); // Reusing promise-based function
+                return data;
+            } catch (error) {
+                throw error;
+            }
+        }
+
+        const asyncAwaitBtn = document.getElementById('asyncAwaitBtn');
+        const asyncAwaitResult = document.getElementById('asyncAwaitResult');
+
+        asyncAwaitBtn.addEventListener('click', async () => {
+            asyncAwaitResult.textContent = 'Fetching data...';
+            try {
+                const result = await fetchDataAsync();
+                asyncAwaitResult.textContent = result;
+            } catch (error) {
+                asyncAwaitResult.textContent = error;
+            }
+        });
+    </script>
+
+</body>
+</html>
