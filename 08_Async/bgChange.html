@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Changing Background Continuously</title>
+  </head>
+  <body>
+    <h1>Changing Background Continuously</h1>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+
+    <script>
+      const st = document.querySelector("#start");
+      const sp = document.querySelector("#stop");
+      const body = document.querySelector("body");
+      let intervalId;
+
+      const changeBg = function () {
+        intervalId = setInterval(function () {
+          let r = Math.floor(Math.random() * 255).toString();
+
+          let g = Math.floor(Math.random() * 255).toString();
+
+          let b = Math.floor(Math.random() * 255).toString();
+
+          body.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+          console.log(r + " " + g + " " + b);
+        }, 1000);
+      };
+
+      const stopBg = function () {
+        clearInterval(intervalId);
+      };
+
+      st.addEventListener("click", changeBg);
+      sp.addEventListener("click", stopBg);
+    </script>
+  </body>
+</html>
