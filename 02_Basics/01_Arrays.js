@@ -6,10 +6,10 @@ let fruits = ["Apple", "Banana", "Mango"];
 console.log("Initial Fruits Array:", fruits);
 
 // 2. Accessing Array Elements
-console.log("First Fruit:", fruits[0]); // Access first element
+console.log("First Fruit:", fruits[0]); 
 
 // 3. Array Properties
-console.log("Array Length:", fruits.length); // Get the length of the array
+console.log("Array Length:", fruits.length); 
 
 // 4. Adding and Removing Elements
 // Adding elements to the end using push()
