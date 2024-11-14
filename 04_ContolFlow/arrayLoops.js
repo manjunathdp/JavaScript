@@ -1,4 +1,4 @@
-// Array Loops Demonstration
+
 
 const fruits = ["Apple", "Banana", "Mango", "Orange"];
 
